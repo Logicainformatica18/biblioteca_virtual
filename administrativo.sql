@@ -565,7 +565,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Alumno_mensaje_insert`(IN `Cod_persona_in` VARCHAR(200), IN `mensaje_in` VARCHAR(1000), IN `imagen_in` LONGBLOB, IN `url_youtube_in` VARCHAR(200), IN `url_pdf_in` VARCHAR(200))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Alumno_mensaje_insert`(IN `Cod_persona_in` VARCHAR(200) CHARSET utf8, IN `mensaje_in` VARCHAR(1000), IN `imagen_in` LONGBLOB, IN `url_youtube_in` VARCHAR(200), IN `url_pdf_in` VARCHAR(200))
 BEGIN
 
   INSERT INTO alumno_mensaje (Cod_persona, mensaje, imagen, url_youtube, url_pdf, fecha)
@@ -588,7 +588,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Alumno_search`(IN `criterio_in` VARCHAR(200), IN `tipo_in` VARCHAR(1))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Alumno_search`(IN `criterio_in` VARCHAR(200) CHARSET utf8, IN `tipo_in` VARCHAR(1))
 BEGIN
 
   IF tipo_in = '2' THEN
@@ -645,7 +645,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Alumno_Select`(IN `Cod_persona_in` CHAR(11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Alumno_Select`(IN `Cod_persona_in` CHAR(11) CHARSET utf8)
 BEGIN
 
   SELECT
@@ -672,7 +672,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Alumno_Update`(IN `Cod_Persona_in` CHAR(11), IN `Direccion_in` LONGTEXT, IN `Te_Estado_Civil_in` CHAR(2), IN `Numero_Documento_in` VARCHAR(10), IN `Celular_in` VARCHAR(20), IN `Email_in` LONGTEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Alumno_Update`(IN `Cod_Persona_in` CHAR(11) CHARSET utf8, IN `Direccion_in` LONGTEXT, IN `Te_Estado_Civil_in` CHAR(2), IN `Numero_Documento_in` VARCHAR(10), IN `Celular_in` VARCHAR(20), IN `Email_in` LONGTEXT)
 BEGIN
 
   UPDATE alumno
@@ -707,7 +707,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Alumno_Update_Select`(IN `Cod_persona_in` CHAR(11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Alumno_Update_Select`(IN `Cod_persona_in` CHAR(11) CHARSET utf8)
 BEGIN
 
   SELECT
@@ -1326,7 +1326,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `nota_curso_select`(`Cod_persona_in` CHAR(11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `nota_curso_select`(`Cod_persona_in` CHAR(11) CHARSET utf8)
 BEGIN
 
   SELECT
@@ -1365,7 +1365,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorist_cambiar_clave`(IN `dni_in` VARCHAR(10), IN `clave_in` VARCHAR(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorist_cambiar_clave`(IN `dni_in` VARCHAR(10) CHARSET utf8, IN `clave_in` VARCHAR(100))
 BEGIN
 
   UPDATE profesorist
@@ -1390,7 +1390,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorist_foto_delete`(IN `Dni_in` VARCHAR(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorist_foto_delete`(IN `Dni_in` VARCHAR(10) CHARSET utf8)
 BEGIN
 
   UPDATE profesorist
@@ -1415,7 +1415,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorist_foto_update`(IN `Dni_in` VARCHAR(10), IN `Foto_in` LONGBLOB)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorist_foto_update`(IN `Dni_in` VARCHAR(10) CHARSET utf8, IN `Foto_in` LONGBLOB)
 BEGIN
 
   UPDATE profesorist
@@ -1440,7 +1440,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorist_Insert`(IN `Dni_in` CHAR(11), IN `Paterno_in` VARCHAR(50), IN `Materno_in` VARCHAR(50), IN `Nombres_in` VARCHAR(50), IN `Direccion_in` LONGTEXT, IN `Fec_Nacimiento_in` DATE, IN `Sexo_in` CHAR(1), IN `Te_Estado_Civil_in` CHAR(2), IN `Telefono_in` VARCHAR(18), IN `Celular_in` VARCHAR(20), IN `Clave_in` LONGTEXT, IN `Email_in` LONGTEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorist_Insert`(IN `Dni_in` CHAR(11) CHARSET utf8, IN `Paterno_in` VARCHAR(50), IN `Materno_in` VARCHAR(50), IN `Nombres_in` VARCHAR(50), IN `Direccion_in` LONGTEXT, IN `Fec_Nacimiento_in` DATE, IN `Sexo_in` CHAR(1), IN `Te_Estado_Civil_in` CHAR(2), IN `Telefono_in` VARCHAR(18), IN `Celular_in` VARCHAR(20), IN `Clave_in` LONGTEXT, IN `Email_in` LONGTEXT)
 BEGIN
 
   INSERT INTO profesorist (dni, paterno, Materno, Nombres, direccion, fec_nacimiento, sexo,
@@ -1502,7 +1502,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorIST_select`(IN `Dni_in` VARCHAR(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorIST_select`(IN `Dni_in` VARCHAR(10) CHARSET utf8)
 BEGIN
 
   SELECT
@@ -1529,7 +1529,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorist_Update`(IN `Dni_in` CHAR(10), IN `Direccion_in` LONGTEXT, IN `Te_Estado_Civil_in` CHAR(2), IN `Celular_in` VARCHAR(20), IN `Email_in` LONGTEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `profesorist_Update`(IN `Dni_in` CHAR(10) CHARSET utf8, IN `Direccion_in` LONGTEXT, IN `Te_Estado_Civil_in` CHAR(2), IN `Celular_in` VARCHAR(20), IN `Email_in` LONGTEXT)
 BEGIN
 
   UPDATE profesorist
@@ -1562,7 +1562,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Profesorist_Update_Select`(IN `Dni_in` CHAR(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Profesorist_Update_Select`(IN `Dni_in` CHAR(10) CHARSET utf8)
 BEGIN
 
   SELECT
@@ -1595,7 +1595,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Publicacion_insert`(IN `dni_in` VARCHAR(200), IN `cod_curso_in` BIGINT, IN `titulo_in` VARCHAR(100), IN `semana_in` VARCHAR(2), IN `mensaje_in` LONGTEXT, IN `url_youtube_in` VARCHAR(200), IN `url_pdf_in` VARCHAR(200))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Publicacion_insert`(IN `dni_in` VARCHAR(200) CHARSET utf8, IN `cod_curso_in` BIGINT CHARSET utf8, IN `titulo_in` VARCHAR(100), IN `semana_in` VARCHAR(2), IN `mensaje_in` LONGTEXT, IN `url_youtube_in` VARCHAR(200), IN `url_pdf_in` VARCHAR(200))
 BEGIN
 
   INSERT INTO publicacion (dni, cod_curso, titulo, semana, mensaje, url_youtube, url_pdf, fec_reg)
@@ -1618,7 +1618,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `publicacion_search`(IN `cod_curso_in` BIGINT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `publicacion_search`(IN `cod_curso_in` BIGINT CHARSET utf8)
 BEGIN
 
   SELECT
@@ -1732,7 +1732,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `registro_alumno_delete`(IN `cod_registro_detalle_in` BIGINT(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registro_alumno_delete`(IN `cod_registro_detalle_in` BIGINT(10) CHARSET utf8)
 BEGIN
 
   -- ELIMINA  NOTAS DEL ALUMNO
@@ -1777,7 +1777,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `registro_detalle_insert`(IN `Cod_registro_in` BIGINT(10), IN `Cod_Persona_in` CHAR(11) CHARSET utf8, IN `Cod_Modulo_in` VARCHAR(1) CHARSET utf8, IN `Cod_Sublinea_in` CHAR(3) CHARSET utf8)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registro_detalle_insert`(IN `Cod_registro_in` BIGINT(10) CHARSET utf8, IN `Cod_Persona_in` CHAR(11) CHARSET utf8, IN `Cod_Modulo_in` VARCHAR(1) CHARSET utf8, IN `Cod_Sublinea_in` CHAR(3) CHARSET utf8)
 BEGIN
 
   IF (SELECT
@@ -1876,7 +1876,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `registro_entregado`(IN `cod_registro_in` BIGINT(20), `cod_profesorist_in` CHAR(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registro_entregado`(IN `cod_registro_in` BIGINT(20) CHARSET utf8, `cod_profesorist_in` CHAR(10) CHARSET utf8)
 BEGIN
 if (select entregado from registro where cod_registro=cod_registro_in and cod_profesorist=cod_profesorist_in)='si' then
   UPDATE registro
@@ -1903,7 +1903,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Registro_insert`(IN `Cod_profesorist_in` CHAR(10), IN `Cod_Marca_in` CHAR(2), IN `Cod_curso_in` CHAR(3), IN `Cod_Horario_in` BIGINT, IN `Cod_Frecuencia_in` BIGINT, IN `Fecha_inicio_in` DATE, IN `Fecha_fin_in` DATE)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Registro_insert`(IN `Cod_profesorist_in` CHAR(10) CHARSET utf8, IN `Cod_Marca_in` CHAR(2) CHARSET utf8, IN `Cod_curso_in` CHAR(3) CHARSET utf8, IN `Cod_Horario_in` BIGINT CHARSET utf8, IN `Cod_Frecuencia_in` BIGINT CHARSET utf8, IN `Fecha_inicio_in` DATE, IN `Fecha_fin_in` DATE)
 BEGIN
 
   -- set @Cod_registro=(select max(Cod_registro) from registro)+1;
@@ -1928,7 +1928,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `registro_profesor_delete`(IN `cod_registro_in` BIGINT(10), IN `dni_in` CHAR(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registro_profesor_delete`(IN `cod_registro_in` BIGINT(10) CHARSET utf8, IN `dni_in` CHAR(10) CHARSET utf8)
 BEGIN
 
   DELETE
@@ -1955,7 +1955,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `registro_search`(IN `cod_registro_in` BIGINT(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registro_search`(IN `cod_registro_in` BIGINT(10) CHARSET utf8)
 BEGIN
 
   SELECT
@@ -2038,7 +2038,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Registro_select`(IN `cod_profesorist_in` CHAR(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Registro_select`(IN `cod_profesorist_in` CHAR(10)  CHARSET utf8)
 BEGIN
 
   SELECT
