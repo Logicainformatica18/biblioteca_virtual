@@ -16,19 +16,6 @@ if ($modulo_elegido == "") {
     $modulo_elegido = "%";
 }
 $registross = isset($_SESSION['registro']) ? $_SESSION['registro'] : "";
-$consulta_registro="SELECT rd.cod_registro_detalle,a.Cod_persona,a.Paterno,a.Materno,a.Nombres,r.cod_registro,
-s.Descripcion as Carrera,m.Descripcion as Modulo ,r.Fecha_inicio,r.Fecha_fin,rf.Descripcion,h.descripcion as Hora,asis.estado as asistencia
-FROM alumno a,registro r,registro_detalle rd,modulo m,sub_linea s,registro_frecuencia rf,horario h,asistencia asis
-where a.Cod_Persona=rd.Cod_Persona
-and r.Cod_Registro=rd.Cod_registro and rd.Cod_Modulo=m.Cod_Modulo and s.cod_linea='001' and s.cod_marca ='01'
-and r.cod_frecuencia=rf.cod_frecuencia
-and h.cod_horario=r.cod_horario
-and s.cod_sublinea=rd.cod_sublinea
- and r.Cod_Registro ='$registross' and s.Descripcion like'$carrera_elegida' and m.Descripcion like'$modulo_elegido'
- and rd.Cod_registro_detalle=asis.Cod_registro_detalle and asis.fec_reg between curdate() and date_add(curdate(),interval 6 day)
- order by a.Paterno asc;
- ";
-/*
 $consulta_registro = "SELECT rd.cod_registro_detalle,a.Cod_persona,a.Paterno,a.Materno,a.Nombres,r.cod_registro,
 s.Descripcion as Carrera,m.Descripcion as Modulo ,r.Fecha_inicio,r.Fecha_fin,rf.Descripcion,h.descripcion as Hora
 FROM alumno a,registro r,registro_detalle rd,modulo m,sub_linea s,registro_frecuencia rf,horario h
@@ -38,8 +25,9 @@ and r.cod_frecuencia=rf.cod_frecuencia
 and h.cod_horario=r.cod_horario
 and s.cod_sublinea=rd.cod_sublinea
  and r.Cod_Registro ='$registross' and s.Descripcion like'$carrera_elegida' and m.Descripcion like'$modulo_elegido'
- order by a.Paterno asc";
- */
+ order by a.Paterno asc;
+ ";
+
 // GUARDA LA CONSULTA GENERADA PARA ELABORAR EL REPORTE DE REGISTROS
 $_SESSION["modulo"] = $modulo_elegido;
 $_SESSION["carrera"] = $carrera_elegida;
@@ -227,8 +215,6 @@ Emitir Reporte de Asistencia del día $fecha_actual</a>";
         $datito = "<td>" . $registro_detalle . "</td>" . "<td>" . $cod__ . "</td>" . "<td><b>" . $r2["Paterno"] . "</b></td>" . "<td>" . $r2["Materno"] . "</td>" . "<td>" . $r2["Nombres"] . "</td>" . "<td>" . $r2["Modulo"] . "</td>" . "<td>" . $r2["Carrera"] . "</td>";
         echo strtoupper($datito);
         //  MODAL1 VENTANA
-        $color="";if($r2["asistencia"]=="A"){$color="blue";}else{$color="red";}
-        echo " <td><a href='#'  class='waves-effect $color darken-4 btn-small' onclick='change_asistencia($registro_detalle)'>".$r2["asistencia"]."</a></td>";
         echo " <td><a href='#calificaciones'  class='waves-effect blue darken-4 btn-small' onclick='llenar_notas($registro_detalle)'>Calificaciones</a></td>";
         echo " <td><a href='#' onclick='eliminar($registro_detalle)' class='waves-effect red darken-4 btn-small'>Eliminar</a></td>";
         echo "</tr>";
@@ -256,21 +242,21 @@ Emitir Reporte de Asistencia del día $fecha_actual</a>";
     }
     // MARCAR ASISTENCIA
     $as = isset($_GET['asistencia']) ? $_GET['asistencia'] : "";
-      // TimeZona America_Lima
-  date_default_timezone_set("America/Lima");
-  $fecha_actual= date('Y-m-d'); 
+    // TimeZona America_Lima
+    date_default_timezone_set("America/Lima");
+    $fecha_actual = date('Y-m-d');
     if (isset($_GET["asistencia"])) {
-        $asistencia_query="call asistencia_marcar($as);";
+        $asistencia_query = "call asistencia_marcar($as);";
 
 
-      //  $asistencia_query="UPDATE asistencia set estado='A' where cod_registro_detalle='$as' and fec_reg='$fecha_actual';";
-        if (mysqli_query($conn,$asistencia_query)) {
+        //  $asistencia_query="UPDATE asistencia set estado='A' where cod_registro_detalle='$as' and fec_reg='$fecha_actual';";
+        if (mysqli_query($conn, $asistencia_query)) {
             echo "<script>
  //alert('Marcado correctamente');
  window.location.href='registro_mantenimiento.php';
   </script>";
         } else {
-            echo " $asistencia_query
+            echo "
             <script>
 
   alert('Error al Marcar Asistencia');
@@ -369,15 +355,19 @@ Emitir Reporte de Asistencia del día $fecha_actual</a>";
         $query3k = (mysqli_query($conn, "select * from asistencia where cod_registro_detalle='$cod_registro_detalle' and fec_reg <= curdate();"));
         $registro3k = mysqli_num_rows($query3k);
 
+     
         echo "<h4>Asistencia</h4>";
         echo "<table class='striped responsive-table'>";
         echo "<thead>
+        <th>Marcar</th>
+        <th>Codigo</th>
 <th>Semana</th><th>Estado</th><th>Hora de Marcación</th><th>Fecha</th>
 
 </thead>";
 
         while ($k3 <= $registro3k) {
             $rk = mysqli_fetch_array($query3k);
+            $cod_asistencia = $rk[0];
             $fecha = $rk[3];
             $hora = $rk[4];
             $estado = $rk[2];
@@ -388,8 +378,9 @@ Emitir Reporte de Asistencia del día $fecha_actual</a>";
                 $estado = "<font color='blue'>" . $estado . "</font>";
             }
             echo "<tr>";
-            echo "<td>$k3</td>
-<td><h5>" . $estado . "</h5></td>" . "<td><input type='time' value='$hora'></td>" . "<td><input type='date' value='$fecha'></td>";
+            echo " <td><a href='#'  class='waves-effect blue darken-4 btn-small' onclick='change_asistencia($cod_asistencia)'>Asistencia</a></td>";
+            echo "<td>$cod_asistencia</td>
+            <td>$k3</td><td><h5>" . $estado . "</h5></td>" . "<td><input type='time' value='$hora'></td>" . "<td><input type='date' value='$fecha'></td>";
             echo "</tr>";
             $k3++;
         }
