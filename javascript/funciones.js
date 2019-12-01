@@ -22,3 +22,4 @@ function registro_delete(id){
        window.location.href ="programacion_profesor.php?r=" + id;
     }
 }
+
