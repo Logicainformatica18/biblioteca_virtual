@@ -81,7 +81,7 @@
                     <h5 class="header col s12 light"></h5>
                 </div>
                 <div class="row center">
-                    <a href="https://www.facebook.com/Anthonyrc16" class="btn waves-effect red" target="_blank"><b>Agrégame en <span class='black-text'>facebook.com/Anthonyrc16</span></b></a>
+                    <a href="https://www.facebook.com/anthonycodeperu" class="btn waves-effect red" target="_blank"><b>Agrégame en <span class='black-text'>facebook.com/Anthonyrc16</span></b></a>
                     <a href="#" id="download-button" class="btn waves-effect green"><b>997852483</b></a>
                     <a href="#" id="download-button" class="btn waves-effect blue"><b>Logicainformatica18@gmail.com</b></a>
                 </div>
@@ -89,7 +89,7 @@
 
             </div>
         </div>
-        <div class="parallax"><img src="https://scontent.flim18-3.fna.fbcdn.net/v/t1.0-9/48416838_2222282817782086_4471331447881334784_n.jpg?_nc_cat=101&_nc_oc=AQnihKnCHAWdpOrNkj3-yY1k6xABWj4rf3XrTFLzbQgIx5gIhderr0gKKo0ox8kjTqM&_nc_ht=scontent.flim18-3.fna&oh=81efdb5291a7deddb99094ad09e9bd48&oe=5E5385FE">
+        <div class="parallax"><img src="https://scontent.flim28-1.fna.fbcdn.net/v/t39.30808-6/277178730_503617928018866_6582202861030469410_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=e3f864&_nc_eui2=AeHE5IvGGp-yZPl6_oaW7AhfuJe-JOzH_iC4l74k7Mf-IGiKqLTByMFelUQZDXX1rNg0LiaZoiE6b-cw9EK9hEPJ&_nc_ohc=2F9o1HxJy_oAX8uapVe&_nc_ht=scontent.flim28-1.fna&oh=00_AT_7zCGivLyVAYxraO5eWKJiO4-K9jM8t75s_qFmDLuQ7g&oe=6259FC05">
         </div>
     </div>
     <?php
@@ -103,6 +103,79 @@
 
 
     <div class="container">
+    <div class="container">
+        <form action="index.php" method="get">
+            <h5><b>ELIGE EL CURSO QUE QUIERES APRENDER HOY...</b></h5> <BR>
+
+            <select class="browser-default" name="curso">
+                <?php
+                $select3 = "Select c.cod_curso,c.Descripcion,s.descripcion from curso c,sub_linea s,publicacion p where c.Cod_sublinea = s.Cod_sublinea  
+     and p.cod_curso=c.cod_curso and s.cod_linea='001' and s.cod_marca ='01'
+     group by c.Descripcion
+      order by c.descripcion asc";
+                $query3 = (mysqli_query($conn, $select3));
+                $registro3 = mysqli_num_rows($query3);
+                while ($j3 < $registro3) {
+                    $row3 = mysqli_fetch_array($query3);
+                    $Cod3 = $row3[0];
+                    $Descripcion3 = $row3[1] . " " . $row3[2];
+                    if ($curso == $Cod3) {
+                        $selected = "selected";
+                    }
+
+                    echo "<option value='$Cod3' $selected>$Descripcion3</option>";
+                    $selected = "";
+                    $j3++;
+                }
+                ?>
+            </select>
+
+            <p></p>
+            <button class="btn waves-effect waves-light" type="submit" name="action" value="Buscar">Buscar
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+
+        <?php
+        if ($action == "Buscar") {
+            $query_esp = (mysqli_query($conn, "call publicacion_search('$curso')"));
+            $fila2 = mysqli_num_rows($query_esp);
+            echo "<p></p>";
+            $z2 = 0;
+
+            while ($z2 < $fila2) {
+                $r2 = mysqli_fetch_array($query_esp);
+                echo "<h2 style='color: red'><b>" . $r2[6] . "</b></h2>";
+                echo "<table border='1'>";
+                echo "<thead>";
+                echo "<th>" . $r2[2] . " " . $r2[3] . " " . $r2[4] . " - " . $r2[5] . "</th><th> - Semana " . $r2[7] . " - Fecha - " . $r2[9] . "</th>";
+                echo "</thead>";
+                echo "<tbody>";
+                echo "<tr>";
+                echo "<td colspan='2'>" . $r2[8] . "</td>";
+                echo "</tr>";
+                echo "</tbody>";
+                echo "</table>";
+                echo "<p></p>";
+                //////////////////////////////////////////////////////////////////////////////////////////
+                $url_pdf = $r2['url_pdf'];
+                if ($url_pdf != "") {
+                    echo "<p></p>";
+                    // str_replace FUNCION QUE REEMPLAZA UNA CADENA DE TEXTO
+                    $url_pdf = str_replace('/view', "/preview", $url_pdf);
+                    echo "<iframe src='$url_pdf' width='100%' height='1000'></iframe>";
+                }
+                $z2++;
+            }
+        }
+
+
+
+        ?>
+
+
+        <div class="fb-comments" data-href="http://educativocesca.000webhostapp.com/index.php" data-width="100%" data-numposts="3" data-order-by="reverse_time"></div>
+    </div>
 
     </div>
 
