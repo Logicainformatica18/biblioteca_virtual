@@ -38,7 +38,7 @@ if( $Cod_persona ==true)
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">
-                <img src="imagenes/cesca.png" width="90px">
+                <img src="https://cesca.edu.pe/wp-content/uploads/2018/02/logo.png" width="90px">
             </a>
             <ul class="right hide-on-med-and-down">
                 <li class="scroll"><a href="index.php">Inicio </a></li>

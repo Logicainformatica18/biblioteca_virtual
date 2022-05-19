@@ -34,8 +34,7 @@
         </div>
                <div class="col l6 s12">
           <h5 class="white-text">Youtube</h5>
-          <p class="grey-text text-lighten-4"> 
-<a   target="_blank" href="https://www.youtube.com/channel/UC13FlAy_27IpJfowhoo73Gg"><img src="https://scontent.flim18-2.fna.fbcdn.net/v/t1.0-9/74403397_2750134841663545_8471276886268313600_n.jpg?_nc_cat=106&_nc_eui2=AeGFaOQ0vxZaKVU_lqv9GKFStjj5E3qf0-hTETvp834Yoi0nEE2JjsDEwTJ5g_F2ydm9FDpDsAA0GgTAWB8UaxguwR15xVXy1WGDWauqHvCkrA&_nc_oc=AQnhDwOQekLvk8FgBpG5IQSvD8KTH9H0TDohmPOSy5m0h72XRWfwyLii9qJxMubWcZw&_nc_ht=scontent.flim18-2.fna&oh=37e833f95f2a8c08b54e75ea8e7f98e2&oe=5E1BDE6D" width="100%" height="490"></a>
+          <p class="grey-text text-lighten-4"><img src="imagenes/youtube.png"  width="100%" height="490"></a>
 
         </div>
         

@@ -51,7 +51,7 @@
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="index.php" class="brand-logo">
-                <img src="imagenes/cesca.png" width="130px">
+                <img src="https://cesca.edu.pe/wp-content/uploads/2018/02/logo.png" width="130px">
             </a>
             <ul class="right hide-on-med-and-down">
 
@@ -89,7 +89,7 @@
 
             </div>
         </div>
-        <div class="parallax"><img src="https://scontent.flim28-1.fna.fbcdn.net/v/t39.30808-6/277178730_503617928018866_6582202861030469410_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=e3f864&_nc_eui2=AeHE5IvGGp-yZPl6_oaW7AhfuJe-JOzH_iC4l74k7Mf-IGiKqLTByMFelUQZDXX1rNg0LiaZoiE6b-cw9EK9hEPJ&_nc_ohc=2F9o1HxJy_oAX8uapVe&_nc_ht=scontent.flim28-1.fna&oh=00_AT_7zCGivLyVAYxraO5eWKJiO4-K9jM8t75s_qFmDLuQ7g&oe=6259FC05">
+        <div class="parallax"><img src="https://scontent.flim9-1.fna.fbcdn.net/v/t39.30808-6/277178730_503617928018866_6582202861030469410_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeHE5IvGGp-yZPl6_oaW7AhfuJe-JOzH_iC4l74k7Mf-IGiKqLTByMFelUQZDXX1rNg0LiaZoiE6b-cw9EK9hEPJ&_nc_ohc=f7ihr0i8F9MAX8fB_Fs&_nc_ht=scontent.flim9-1.fna&oh=00_AT8uHJKCDvcsnt0vX2dUNZxAnT3QcKlzy7Xs-4Q3qi2brA&oe=628B6C45">
         </div>
     </div>
     <?php

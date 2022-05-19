@@ -20,7 +20,7 @@
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="index.php" class="brand-logo">
-                <img src="imagenes/cesca.png" width="130px">
+                <img src="https://cesca.edu.pe/wp-content/uploads/2018/02/logo.png" width="130px">
             </a>
             <ul class="right hide-on-med-and-down">
                 <li class="scroll active"><a href="sylabus.php">Sylabus </a></li>
